@@ -52,6 +52,14 @@ public class ProductEntity {
 		return this;
 	}
 
+	@Column(name = "inCart")
+	private boolean inCart;
+
+	public ProductEntity setInCart(final boolean inCart){
+		this.inCart = inCart;
+		return this;
+	}
+
 	@Column(name = "createdon", insertable = false, updatable = false)
 	@Generated(GenerationTime.INSERT)
 	private LocalDateTime createdOn;
@@ -74,12 +82,14 @@ public class ProductEntity {
 		this.count = -1;
 		this.id = new UUID(0, 0);
 		this.lookupCode = StringUtils.EMPTY;
+		this.inCart = false;
 	}
 
 	public ProductEntity(final String lookupCode, final int count) {
 		this.count = count;
 		this.id = new UUID(0, 0);
 		this.lookupCode = lookupCode;
+		this.inCart = inCart;
 	}
 
 	public ProductEntity(final Product apiProduct) {
